@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhl6quvjhmlq6"]
+
+[ext_resource type="Script" uid="uid://unr2h40vx4ir" path="res://scenes/physics/sping_arm/rigid_spring_arm_3d.gd" id="1_egnqk"]
+
+[node name="RigidSpringArm3D" type="Node3D" unique_id=1147982495]
+script = ExtResource("1_egnqk")

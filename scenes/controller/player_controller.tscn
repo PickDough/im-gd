@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dvximmgsvy201"]
+
+[ext_resource type="Script" uid="uid://bsfribhyc5hyf" path="res://scenes/controller/player_controller.gd" id="1_owyac"]
+[ext_resource type="Resource" uid="uid://b116qp8la326f" path="res://input/player/movement.tres" id="2_jwdso"]
+[ext_resource type="Resource" uid="uid://b463jyuwqy7dq" path="res://input/player/jump.tres" id="3_bgjx5"]
+[ext_resource type="Resource" uid="uid://wm4u4vjkqrhb" path="res://input/player/sprint.tres" id="4_d1fge"]
+[ext_resource type="Resource" uid="uid://cjdknnjd2mghh" path="res://input/player/look.tres" id="5_dulpa"]
+[ext_resource type="Resource" uid="uid://t47mqes2y8wq" path="res://input/player/crouch.tres" id="5_g2yj0"]
+
+[node name="PlayerController" type="Node3D" unique_id=1582569035]
+script = ExtResource("1_owyac")
+movement = ExtResource("2_jwdso")
+jump = ExtResource("3_bgjx5")
+sprint = ExtResource("4_d1fge")
+crouch = ExtResource("5_g2yj0")
+look = ExtResource("5_dulpa")

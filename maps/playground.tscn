@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://ba5i1ueecurq8"]
+
+[ext_resource type="Shader" uid="uid://d4htut5r44bh7" path="res://assets/shaders/chess.gdshader" id="1_5t3sv"]
+[ext_resource type="PackedScene" uid="uid://onxu1qqewqrp" path="res://scenes/pawn/rigid_pawn.tscn" id="1_vwsla"]
+[ext_resource type="PackedScene" uid="uid://dvximmgsvy201" path="res://scenes/controller/player_controller.tscn" id="2_02lo7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jujuo"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_02lo7"]
+sky_material = SubResource("ProceduralSkyMaterial_jujuo")
+
+[sub_resource type="Environment" id="Environment_5t3sv"]
+background_mode = 2
+sky = SubResource("Sky_02lo7")
+glow_enabled = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5t3sv"]
+data = PackedVector3Array(-50, 0.1, -50, -50, -0.1, -50, 50, -0.1, -50, -50, 0.1, 50, -50, -0.1, 50, -50, -0.1, -50, -50, -0.1, 50, 50, -0.1, 50, -50, -0.1, -50, -50, 0.1, -50, -50, 0.1, 50, -50, -0.1, -50, -50, 0.1, 50, -50, 0.1, -50, 50, 0.1, -50, -50, 0.1, 50, 50, 0.1, 50, -50, -0.1, 50, 50, -0.1, 50, 50, -0.1, -50, -50, -0.1, -50, 50, 0.1, -50, 50, -0.1, -50, 50, -0.1, 50, 50, 0.1, 50, 50, -0.1, 50, -50, -0.1, 50, 50, 0.1, -50, -50, 0.1, -50, 50, -0.1, -50, 50, 0.1, 50, -50, 0.1, 50, 50, 0.1, -50, 50, 0.1, 50, 50, 0.1, -50, 50, -0.1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vse7m"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02lo7"]
+render_priority = 0
+shader = ExtResource("1_5t3sv")
+shader_parameter/cell_size = 32.0
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed = 0.0
+shader_parameter/color_speed = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_vse7m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5t3sv"]
+points = PackedVector3Array(0.4578707, 0.19807906, 0.01578243, -0.48873997, -0.09168735, -0.04518683, -0.47150937, -0.1370268, -0.090701535, 0.07635914, -0.33327514, 0.36417928, 0.13656896, -0.33242497, -0.3469059, -0.15161654, 0.47198188, -0.060245913, -0.10534735, 0.21193622, 0.43966028, -0.045016855, 0.19809827, -0.4564163, 0.4090765, -0.15116782, 0.2425159, -0.27137637, -0.37776056, 0.18187061, 0.41147974, -0.07598096, -0.27324012, 0.19819722, -0.4561612, -0.04493101, -0.24064063, -0.33167413, -0.2857683, 0.22713655, 0.2567203, 0.36304116, 0.22752243, 0.42360392, -0.13548777, -0.37899047, 0.060702223, 0.31946206, -0.40674683, 0.18104935, -0.22569102, -0.014631338, -0.09176946, 0.49022886, -0.37785473, 0.30279276, 0.121712334, 0.046232317, 0.45601088, 0.19818504, -0.22746402, -0.060786348, -0.44034815, 0.22845526, 0.06072284, -0.43988743, -0.09113759, -0.48924586, -0.045174047, 0.44186506, -0.22821625, -0.044958085, 0.31717873, 0.24121423, -0.30081153, -0.044848714, 0.39473665, -0.30295488, -0.316348, -0.19622163, 0.33255145, 0.19844188, -0.03042933, 0.45723665, 0.061471395, -0.1522456, -0.47130713, 0.36308852, 0.25670764, 0.22707908, 0.15213433, -0.43948856, 0.18237916, -0.21072462, 0.36227608, 0.2722302)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ilsnw"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vwsla"]
+points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
+
+[node name="Playground" type="Node3D" unique_id=860550497]
+
+[node name="RigidPawn" parent="." unique_id=1306842101 instance=ExtResource("1_vwsla")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5416703, 0)
+collision_layer = 2
+collision_mask = 7
+
+[node name="PlayerController" parent="RigidPawn" unique_id=1582569035 instance=ExtResource("2_02lo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.370779, 0)
+
+[node name="Env" type="Node3D" parent="." unique_id=1218717526]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=2007725495]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=732026231]
+environment = SubResource("Environment_5t3sv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1794936456]
+collision_mask = 33
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=35743897]
+shape = SubResource("ConcavePolygonShape3D_5t3sv")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=355818057]
+collision_mask = 33
+mesh = SubResource("BoxMesh_vse7m")
+material = SubResource("ShaderMaterial_02lo7")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1039313952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.031072, -4.8904004)
+collision_layer = 4
+collision_mask = 7
+mass = 200.0
+max_contacts_reported = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=735714307]
+mesh = SubResource("SphereMesh_vse7m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1150912184]
+shape = SubResource("ConvexPolygonShape3D_5t3sv")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1946161459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.031072, -4.8904004)
+collision_layer = 4
+collision_mask = 7
+mass = 15000.0
+max_contacts_reported = 5
+angular_damp = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=1654890513]
+mesh = SubResource("BoxMesh_ilsnw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1909270953]
+shape = SubResource("ConvexPolygonShape3D_vwsla")

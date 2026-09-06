@@ -1,0 +1,18 @@
+
+[project]
+godot = "4.7.2-stable"
+
+[[dependency]]
+name = "g.u.i.d.e"
+git = "https://github.com/godotneers/G.U.I.D.E"
+rev = "v0.14.0"
+
+[[dependency]]
+name = "script-ide"
+git = "https://github.com/Maran23/script-ide"
+rev = "master"
+
+[[dependency]]
+name = "gdscript-formatter"
+git = "https://github.com/GDQuest/GDScript-formatter"
+rev = "main"
