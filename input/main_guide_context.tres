@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dh0hf08e0yit5" path="res://addons/guide/inputs/guide_input_mouse_axis_2d.gd" id="12_v5w0w"]
 [ext_resource type="Resource" uid="uid://t47mqes2y8wq" path="res://input/player/crouch.tres" id="13_fox3g"]
 [ext_resource type="Resource" uid="uid://bicjn4ob838qd" path="res://input/abilities/interact.tres" id="14_c8ro0"]
+[ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="15_kbyp7"]
 
 [sub_resource type="Resource" id="Resource_ivwfi"]
 script = ExtResource("4_fyamf")
@@ -130,9 +131,13 @@ input_mappings = Array[ExtResource("2_6hjac")]([SubResource("Resource_pm1j3")])
 script = ExtResource("4_fyamf")
 key = 69
 
+[sub_resource type="Resource" id="Resource_u8hl4"]
+script = ExtResource("15_kbyp7")
+
 [sub_resource type="Resource" id="Resource_2qhqr"]
 script = ExtResource("2_6hjac")
 input = SubResource("Resource_7d0vw")
+triggers = Array[ExtResource("6_142vl")]([SubResource("Resource_u8hl4")])
 
 [sub_resource type="Resource" id="Resource_iwwkh"]
 script = ExtResource("1_2m5m2")

@@ -4,4 +4,3 @@
 
 [node name="Arrow3D" type="Node3D" unique_id=1294922347]
 script = ExtResource("1_4cv6y")
-debug_only = null

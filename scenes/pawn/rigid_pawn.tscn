@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bd3nnpktd31nj" path="res://scenes/pawn/rigid_pawn.gd" id="1_rigid"]
 [ext_resource type="Script" uid="uid://cqmylbuvj5na4" path="res://scenes/pawn/pawn_config.gd" id="2_pcpcu"]
+[ext_resource type="PackedScene" uid="uid://bbndxrcji8ku6" path="res://scenes/controller/abilities/pick_up.tscn" id="3_qifwp"]
+[ext_resource type="Script" uid="uid://b3a7mmnmcxeh1" path="res://scenes/controller/abilities/pick_up_config.gd" id="4_twsb6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_orgvy"]
 friction = 0.0
@@ -16,6 +18,12 @@ metadata/_custom_type_script = "uid://cqmylbuvj5na4"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5t3sv"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="Resource" id="Resource_2tanu"]
+script = ExtResource("4_twsb6")
+pickup_length = 2.0
+pickup_strength = 2000.0
+metadata/_custom_type_script = "uid://b3a7mmnmcxeh1"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilsnw"]
 albedo_color = Color(0.95727116, 0.51923054, 0.67413116, 1)
@@ -35,6 +43,10 @@ config = SubResource("Resource_5dqq3")
 shape = SubResource("BoxShape3D_5t3sv")
 
 [node name="Head" type="Node3D" parent="." unique_id=520940483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6271271, 0)
+
+[node name="PickUp" parent="Head" unique_id=2038123641 instance=ExtResource("3_qifwp")]
+config = SubResource("Resource_2tanu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=796364773]
 mesh = SubResource("CapsuleMesh_vse7m")

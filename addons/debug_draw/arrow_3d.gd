@@ -11,6 +11,8 @@ var body: MeshInstance3D
 @export var lenght: float = 1:
 	set(value):
 		lenght = value
+		if !head or !body:
+			return
 		if !Engine.is_editor_hint() and debug_only:
 			return
 		head.position.z = lenght - 0.25 / 2.0
@@ -26,11 +28,11 @@ func _ready() -> void:
 		return
 
 	head = MeshInstance3D.new()
-	head.mesh = head_mesh
+	head.mesh = head_mesh.duplicate()
 	head.position.z = 0.875
 	head.rotate_x(PI / 2)
 	body = MeshInstance3D.new()
-	body.mesh = body_mesh
+	body.mesh = body_mesh.duplicate()
 	body.position.z = 0.375
 	body.rotate_x(PI / 2)
 	add_child(head)
@@ -38,4 +40,4 @@ func _ready() -> void:
 
 
 func direction() -> Vector3:
-	return global_transform.basis * Vector3.FORWARD
+	return global_transform.basis * Vector3.FORWARD * lenght

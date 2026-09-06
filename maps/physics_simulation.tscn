@@ -29,14 +29,11 @@ script = ExtResource("2_xe2in")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2089585374]
 environment = SubResource("Environment_6kefv")
 
-[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1728488124 node_paths=PackedStringArray("look_at_targets")]
-transform = Transform3D(0.9803824, 0.12638432, 0.15125288, -7.450581e-09, 0.76737165, -0.6412025, -0.19710512, 0.62862366, 0.75231767, 0, 0, 4.1964197)
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1728488124]
+transform = Transform3D(0.9803824, 0.1263843, 0.15125287, -7.450581e-09, 0.7673716, -0.64120245, -0.19710512, 0.6286236, 0.7523176, 0, 0, 4.1964197)
 script = ExtResource("1_6kefv")
 look_at_mode = 3
-look_at_targets = [NodePath("../RigidBody3D"), NodePath("../RigidSpringArm3D")]
 tween_resource = SubResource("Resource_xese6")
-align_transform_with_view = Callable()
-align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="PhantomCamera3D" unique_id=1136110410]
