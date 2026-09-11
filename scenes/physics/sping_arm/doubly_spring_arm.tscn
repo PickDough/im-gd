@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://26teb0phw6uh"]
+
+[ext_resource type="Script" uid="uid://b2acx22g83eaa" path="res://scenes/physics/sping_arm/doubly_spring_arm.gd" id="1_0w0ow"]
+
+[node name="DoublySpringArm3D" type="Node3D" unique_id=466889400]
+script = ExtResource("1_0w0ow")

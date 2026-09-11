@@ -47,6 +47,7 @@ points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5416703, 0)
 collision_layer = 2
 collision_mask = 7
+can_sleep = false
 
 [node name="PlayerController" parent="RigidPawn" unique_id=1582569035 instance=ExtResource("2_02lo7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.370779, 0)
@@ -71,20 +72,19 @@ collision_mask = 33
 mesh = SubResource("BoxMesh_vse7m")
 material = SubResource("ShaderMaterial_02lo7")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1039313952]
+[node name="Sphere" type="RigidBody3D" parent="." unique_id=1039313952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.031072, -4.8904004)
 collision_layer = 4
 collision_mask = 7
-mass = 200.0
 max_contacts_reported = 5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=735714307]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sphere" unique_id=735714307]
 mesh = SubResource("SphereMesh_vse7m")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1150912184]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere" unique_id=1150912184]
 shape = SubResource("ConvexPolygonShape3D_5t3sv")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1946161459]
+[node name="Cube" type="RigidBody3D" parent="." unique_id=1946161459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.031072, -4.8904004)
 collision_layer = 4
 collision_mask = 7
@@ -92,8 +92,8 @@ mass = 15000.0
 max_contacts_reported = 5
 angular_damp = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=1654890513]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube" unique_id=1654890513]
 mesh = SubResource("BoxMesh_ilsnw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1909270953]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube" unique_id=1909270953]
 shape = SubResource("ConvexPolygonShape3D_vwsla")

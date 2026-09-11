@@ -8,16 +8,16 @@ var head: MeshInstance3D
 var body: MeshInstance3D
 
 @export var debug_only: bool = true
-@export var lenght: float = 1:
+@export var length: float = 1:
 	set(value):
-		lenght = value
+		length = value
 		if !head or !body:
 			return
 		if !Engine.is_editor_hint() and debug_only:
 			return
-		head.position.z = lenght - 0.25 / 2.0
-		body.mesh.height = lenght - 0.25
-		body.position.z = (lenght - 0.25) / 2.0
+		head.position.z = length - 0.25 / 2.0
+		body.mesh.height = length - 0.25
+		body.position.z = (length - 0.25) / 2.0
 
 @export_tool_button("Direction") var print_direction = func():
 	print(direction())
@@ -37,7 +37,8 @@ func _ready() -> void:
 	body.rotate_x(PI / 2)
 	add_child(head)
 	add_child(body)
+	length = length
 
 
 func direction() -> Vector3:
-	return global_transform.basis * Vector3.FORWARD * lenght
+	return global_transform.basis * Vector3.FORWARD * length

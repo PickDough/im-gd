@@ -45,8 +45,8 @@ func _on_look() -> void:
 	var pitch = look.value_axis_2d.y * pawn.config.look_pitch
 	var yaw = look.value_axis_2d.x * pawn.config.look_yaw
 	pawn.add_look_yaw(yaw)
-	camera.rotate(Vector3.RIGHT, pitch)
-	camera.rotation.x = clamp(camera.rotation.x, -PI * 0.75, PI * 0.75)
+	pawn.head().rotate(Vector3.RIGHT, pitch)
+	pawn.head().rotation.x = clamp(pawn.head().rotation.x, -PI * 0.75, PI * 0.75)
 
 func _on_crouch() -> void:
 	pawn.intent.crouch = true

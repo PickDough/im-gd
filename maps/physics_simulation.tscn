@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_6kefv"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_xe2in"]
-[ext_resource type="PackedScene" uid="uid://bhl6quvjhmlq6" path="res://scenes/physics/sping_arm/rigid_spring_arm_3d.tscn" id="3_xe2in"]
+[ext_resource type="Script" uid="uid://b2acx22g83eaa" path="res://scenes/physics/sping_arm/doubly_spring_arm.gd" id="3_xese6"]
 [ext_resource type="Script" uid="uid://c1ff7yn20d101" path="res://addons/debug_draw/arrow_3d.gd" id="4_xese6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0er8"]
@@ -29,11 +29,14 @@ script = ExtResource("2_xe2in")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2089585374]
 environment = SubResource("Environment_6kefv")
 
-[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1728488124]
-transform = Transform3D(0.9803824, 0.1263843, 0.15125287, -7.450581e-09, 0.7673716, -0.64120245, -0.19710512, 0.6286236, 0.7523176, 0, 0, 4.1964197)
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1728488124 node_paths=PackedStringArray("look_at_targets")]
+transform = Transform3D(1, 0, 0, 0, 0.68601876, -0.72758377, 0, 0.72758377, 0.68601876, 0, 0, 4.1964197)
 script = ExtResource("1_6kefv")
 look_at_mode = 3
+look_at_targets = [NodePath("../RigidBody3D"), NodePath("../RigidBody3D2")]
 tween_resource = SubResource("Resource_xese6")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="PhantomCamera3D" unique_id=1136110410]
@@ -48,26 +51,29 @@ mesh = SubResource("SphereMesh_vse7m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1640911382]
 shape = SubResource("SphereShape3D_vse7m")
 
-[node name="RigidSpringArm3D" parent="." unique_id=1147982495 node_paths=PackedStringArray("target", "arrow") instance=ExtResource("3_xe2in")]
-transform = Transform3D(0.8085713, 0.5883982, 0, -0.5883982, 0.8085713, 0, 0, 0, 1, -1.6873741, 4.427306, 0)
-k = 2500.0
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=70562463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1754146, 0)
+mass = 2.0
+gravity_scale = -0.3
+linear_damp = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=769128572]
+mesh = SubResource("SphereMesh_vse7m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=2088383818]
+shape = SubResource("SphereShape3D_vse7m")
+
+[node name="DoublySpringArm3D" type="Node3D" parent="." unique_id=1409976610 node_paths=PackedStringArray("other_target", "target", "arrow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6224155, 0)
+script = ExtResource("3_xese6")
+other_target = NodePath("../RigidBody3D2")
+k = 100.0
 target = NodePath("../RigidBody3D")
 arrow = NodePath("Arrow3D")
+metadata/_custom_type_script = "uid://b2acx22g83eaa"
 
-[node name="Arrow3D" type="Node3D" parent="RigidSpringArm3D" unique_id=722493124]
-transform = Transform3D(0.3179777, 4.144269e-08, 0.9480982, 0.9480982, -1.3899246e-08, -0.3179777, 0, 1, -4.371139e-08, 0, 0, 0)
+[node name="Arrow3D" type="Node3D" parent="DoublySpringArm3D" unique_id=13988809]
+transform = Transform3D(1, 0, 0, 0, -0.0022966086, 0.9999974, 0, -0.9999974, -0.0022966086, 0, -1.4548831, 0)
 script = ExtResource("4_xese6")
-debug_only = false
-metadata/_custom_type_script = "uid://c1ff7yn20d101"
-
-[node name="RigidSpringArm3D2" parent="." unique_id=1351962409 node_paths=PackedStringArray("target", "arrow") instance=ExtResource("3_xe2in")]
-transform = Transform3D(-0.809017, -0.5877852, 8.742278e-08, -0.58778524, 0.80901694, 0, -7.0726514e-08, -5.1385815e-08, -1, 2.3236394, 4.427306, 0)
-k = 10000.0
-target = NodePath("../RigidBody3D")
-arrow = NodePath("Arrow3D")
-
-[node name="Arrow3D" type="Node3D" parent="RigidSpringArm3D2" unique_id=875125866]
-transform = Transform3D(0.3179777, 4.144269e-08, 0.9480982, 0.9480982, -1.3899246e-08, -0.3179777, 0, 1, -4.371139e-08, 0, 0, 0)
-script = ExtResource("4_xese6")
-debug_only = false
+length = 3.0
 metadata/_custom_type_script = "uid://c1ff7yn20d101"

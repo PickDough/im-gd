@@ -2,3 +2,6 @@ root = true
 
 [*]
 charset = utf-8
+
+[*.gd]
+max_line_length = 120

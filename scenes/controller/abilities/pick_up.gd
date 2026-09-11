@@ -7,40 +7,47 @@ extends Node3D
 
 var raycast: RayCast3D
 
-@onready var arm: RigidSpringArm3D = $RigidSpringArm3D
-@onready var holder: RigidSpringArm3D = $RigidBody3D/RigidSpringArm3D
+@onready var horizontal: DoublySpringArm3D = $HorizontalArm
+@onready var vertical: DoublySpringArm3D = $Knee/VerticalArm
 
 
 func _ready() -> void:
-	raycast = RayCast3D.new()
-	raycast.collision_mask = 4
-	raycast.target_position = Vector3.FORWARD * config.pickup_length
-	add_child(raycast)
-	config.changed.connect(config_changed)
+    raycast = RayCast3D.new()
+    raycast.collision_mask = 4
+    raycast.target_position = Vector3.FORWARD * config.pickup_length
+    add_child(raycast)
+    config.changed.connect(config_changed)
+
+    if Engine.is_editor_hint():
+        return
+    var body = get_parent().get_parent()
+    horizontal.other_target = body
 
 
 func _physics_process(_delta: float) -> void:
-	if interact.is_triggered():
-		print("triggered pick up")
-		var held = find_holding()
-		if held:
-			holder.target = null
-		elif raycast.is_colliding():
-			var item = raycast.get_collider() as Node3D
-			holder.target = item
-			print("picked up")
-		return
-	if raycast.is_colliding():
-		# add material
-		pass
+    if interact.is_triggered():
+        print("triggered pick up")
+        var held = find_holding()
+        if held:
+            vertical.target = null
+        elif raycast.is_colliding():
+            var item = raycast.get_collider() as Node3D
+            vertical.target = item
+            print("picked up")
+        return
+    if raycast.is_colliding():
+        # add material
+        pass
 
 
 func find_holding() -> RigidBody3D:
-	return holder.target
+    return vertical.target
 
 
 func config_changed() -> void:
-	arm.arrow.lenght = config.pickup_length
-	arm.k = config.pickup_strength
-	arm.target.global_position = arm.arrow.global_position - arm.arrow.direction()
-	holder.k = config.pickup_strength
+    horizontal.arrow.length = config.pickup_length
+    horizontal.k = config.pickup_strength
+    horizontal.target.global_position = horizontal.arrow.global_position - horizontal \
+            .arrow \
+            .direction()
+    vertical.k = config.pickup_strength
