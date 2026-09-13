@@ -22,7 +22,8 @@ size = Vector3(1, 2, 1)
 [sub_resource type="Resource" id="Resource_twsb6"]
 script = ExtResource("4_qifwp")
 pickup_length = 4.0
-pickup_strength = 100000.0
+pickup_frequency = null
+pickup_damping_ratio = null
 metadata/_custom_type_script = "uid://b3a7mmnmcxeh1"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilsnw"]
@@ -47,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6271271, 0)
 
 [node name="PickUp" parent="Head" unique_id=2038123641 instance=ExtResource("3_qifwp")]
 config = SubResource("Resource_twsb6")
+metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=796364773]
 mesh = SubResource("CapsuleMesh_vse7m")

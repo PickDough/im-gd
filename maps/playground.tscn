@@ -3,6 +3,15 @@
 [ext_resource type="Shader" uid="uid://d4htut5r44bh7" path="res://assets/shaders/chess.gdshader" id="1_5t3sv"]
 [ext_resource type="PackedScene" uid="uid://onxu1qqewqrp" path="res://scenes/pawn/rigid_pawn.tscn" id="1_vwsla"]
 [ext_resource type="PackedScene" uid="uid://dvximmgsvy201" path="res://scenes/controller/player_controller.tscn" id="2_02lo7"]
+[ext_resource type="Script" uid="uid://cqmylbuvj5na4" path="res://scenes/pawn/pawn_config.gd" id="2_vwsla"]
+
+[sub_resource type="Resource" id="Resource_02yhg"]
+script = ExtResource("2_vwsla")
+jump_height = 5.0
+acceleration = 1.0
+look_pitch = 0.01
+look_yaw = 0.01
+metadata/_custom_type_script = "uid://cqmylbuvj5na4"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jujuo"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -47,7 +56,9 @@ points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5416703, 0)
 collision_layer = 2
 collision_mask = 7
+mass = 1.0
 can_sleep = false
+config = SubResource("Resource_02yhg")
 
 [node name="PlayerController" parent="RigidPawn" unique_id=1582569035 instance=ExtResource("2_02lo7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.370779, 0)

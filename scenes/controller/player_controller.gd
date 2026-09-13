@@ -10,13 +10,18 @@ extends Node3D
 var pawn: RigidPawn
 var camera: Camera3D
 
+var hud: PlayerHud
 
-func _ready() -> void:
+
+func _enter_tree() -> void:
+    hud = $CanvasLayer
     pawn = get_parent()
-    assert(pawn is RigidPawn, "Controller must be a child of RigidPawn")
-
     camera = Camera3D.new()
     pawn.head().add_child(camera)
+
+
+func _ready() -> void:
+    assert(pawn is RigidPawn, "Controller must be a child of RigidPawn")
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
     jump.just_triggered.connect(_on_jump)

@@ -1,30 +1,17 @@
 [gd_scene format=3 uid="uid://bbndxrcji8ku6"]
 
-[ext_resource type="PackedScene" uid="uid://bhl6quvjhmlq6" path="res://scenes/physics/sping_arm/rigid_spring_arm_3d.tscn" id="1_5ob8n"]
 [ext_resource type="Script" uid="uid://dj2gggnw8sild" path="res://scenes/controller/abilities/pick_up.gd" id="1_sa6q4"]
-[ext_resource type="Script" uid="uid://c1ff7yn20d101" path="res://addons/debug_draw/arrow_3d.gd" id="2_bt7dm"]
 [ext_resource type="Script" uid="uid://b3a7mmnmcxeh1" path="res://scenes/controller/abilities/pick_up_config.gd" id="2_fn24x"]
 [ext_resource type="Resource" uid="uid://bicjn4ob838qd" path="res://input/abilities/interact.tres" id="3_1c0tb"]
-[ext_resource type="Script" uid="uid://b2acx22g83eaa" path="res://scenes/physics/sping_arm/doubly_spring_arm.gd" id="5_1c0tb"]
 
 [sub_resource type="Resource" id="Resource_t4v46"]
 script = ExtResource("2_fn24x")
 pickup_length = 4.0
+pickup_frequency = null
+pickup_damping_ratio = null
 metadata/_custom_type_script = "uid://b3a7mmnmcxeh1"
 
 [node name="PickUp" type="Node3D" unique_id=2038123641]
 script = ExtResource("1_sa6q4")
 config = SubResource("Resource_t4v46")
 interact = ExtResource("3_1c0tb")
-
-[node name="HorizontalArm" parent="." unique_id=1147982495 node_paths=PackedStringArray("arrow") instance=ExtResource("1_5ob8n")]
-script = ExtResource("5_1c0tb")
-frequency = 2.0
-damping_ratio = 1.0
-arrow = NodePath("Arrow3D")
-
-[node name="Arrow3D" type="Node3D" parent="HorizontalArm" unique_id=48602520]
-script = ExtResource("2_bt7dm")
-debug_only = false
-length = 4.0
-metadata/_custom_type_script = "uid://c1ff7yn20d101"

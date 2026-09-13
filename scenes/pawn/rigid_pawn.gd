@@ -1,6 +1,9 @@
 class_name RigidPawn
 extends RigidBody3D
 
+signal force_applied(Vector3)
+signal impulse_applied(Vector3)
+
 ## How long a jump press stays queued while airborne. Without a timeout the
 ## press latches until the next landing, which reads as a double jump.
 const JUMP_BUFFER_TIME := 0.1
@@ -34,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
     var current := Vector3(linear_velocity.x, 0.0, linear_velocity.z)
     var force := Vector3.ZERO
+    print(current.length())
     if moving:
         # F = m * a along the input direction.
         var rate: float = config.acceleration if on_floor else config.air_acceleration
@@ -51,6 +55,7 @@ func _physics_process(delta: float) -> void:
     elif on_floor:
         force = _friction(current, delta)
     apply_central_force(force)
+    force_applied.emit(force)
 
     if intent.jump:
         _jump_buffer = JUMP_BUFFER_TIME
@@ -58,7 +63,9 @@ func _physics_process(delta: float) -> void:
     _jump_buffer = maxf(_jump_buffer - delta, 0.0)
 
     if on_floor and _jump_buffer > 0.0:
-        apply_central_impulse(Vector3.UP * mass * (config.jump_height - linear_velocity.y))
+        var impulse = Vector3.UP * mass * (config.jump_height - linear_velocity.y)
+        apply_central_impulse(impulse)
+        impulse_applied.emit(impulse)
         _jump_buffer = 0.0
 
     if intent.crouch:

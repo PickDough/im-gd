@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://wm4u4vjkqrhb" path="res://input/player/sprint.tres" id="4_d1fge"]
 [ext_resource type="Resource" uid="uid://cjdknnjd2mghh" path="res://input/player/look.tres" id="5_dulpa"]
 [ext_resource type="Resource" uid="uid://t47mqes2y8wq" path="res://input/player/crouch.tres" id="5_g2yj0"]
+[ext_resource type="Script" uid="uid://coqion1bkdpyi" path="res://scenes/controller/player_hud.gd" id="7_g2yj0"]
+[ext_resource type="Script" uid="uid://bk27t51fjyxvo" path="res://scenes/controller/direction_hud.gd" id="8_u46f8"]
 
 [node name="PlayerController" type="Node3D" unique_id=1582569035]
 script = ExtResource("1_owyac")
@@ -14,3 +16,36 @@ jump = ExtResource("3_bgjx5")
 sprint = ExtResource("4_d1fge")
 crouch = ExtResource("5_g2yj0")
 look = ExtResource("5_dulpa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=965280303]
+script = ExtResource("7_g2yj0")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=471798582]
+custom_maximum_size = Vector2(16, 9)
+offset_left = 571.0
+offset_top = 319.0
+offset_right = 581.0
+offset_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Direction" type="Control" parent="CanvasLayer" unique_id=1679551605]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Direction" unique_id=1204448824]
+position = Vector2(-17, 68)
+rotation = -1.5707964
+points = PackedVector2Array(-30, 0, 27.204254, 0, 40, 0, 25, 12, 25, -12, 40, 0)
+width = 8.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_u46f8")
