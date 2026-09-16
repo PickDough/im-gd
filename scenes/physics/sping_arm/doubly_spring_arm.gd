@@ -8,6 +8,6 @@ func _physics_process(_delta: float) -> void:
     if !target or !other_target:
         return
 
-    var force = _force(other_target, other_target.linear_velocity, other_target.mass)
+    var force = arrow.direction().normalized() * _x(self) * k
     target.apply_central_force(force)
     other_target.apply_central_force(-force)

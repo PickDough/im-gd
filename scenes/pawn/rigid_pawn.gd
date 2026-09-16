@@ -36,21 +36,16 @@ func _physics_process(delta: float) -> void:
         wish = wish.normalized()
 
     var current := Vector3(linear_velocity.x, 0.0, linear_velocity.z)
-    var force := Vector3.ZERO
     print(current.length())
+    var force := Vector3.ZERO
     if moving:
-        # F = m * a along the input direction.
-        var rate: float = config.acceleration if on_floor else config.air_acceleration
+        var budget: float = config.strength if on_floor else config.air_strength
         var along := current.dot(wish)
-        if along < _max_speed():
-            # Only the last step into the speed cap is trimmed, so we settle on
-            # it instead of overshooting by a whole step of acceleration.
-            var to_cap := (_max_speed() - along) * mass / delta
-            force = (wish * mass * rate).limit_length(to_cap)
+        force = _along_force(current, wish, budget, delta)
         if on_floor:
-            # Feet resist sliding sideways. The cap above only measures speed
-            # along the input, so without this, turning banks the old heading's
-            # speed onto an axis it cannot see and circling accelerates forever.
+            # Feet resist sliding sideways. Along-wish only measures speed on
+            # the input axis, so without this, turning banks the old heading
+            # onto an axis it cannot see and circling accelerates forever.
             force += _friction(current - wish * along, delta)
     elif on_floor:
         force = _friction(current, delta)
@@ -90,6 +85,13 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
     _yaw_delta = 0.0
 
 
+## Force along `wish` that would match the target speed this step, clamped to
+## `budget`. Overspeed reverses the push instead of ignoring it.
+func _along_force(current: Vector3, wish: Vector3, budget: float, delta: float) -> Vector3:
+    var needed := (_max_speed() - current.dot(wish)) * mass / delta
+    return wish * clampf(needed, -budget, budget)
+
+
 ## Ground friction opposing `velocity`, trimmed so one step can bring it to rest
 ## but never drag it backwards through zero.
 func _friction(velocity: Vector3, delta: float) -> Vector3:
@@ -97,7 +99,7 @@ func _friction(velocity: Vector3, delta: float) -> Vector3:
     if is_zero_approx(speed):
         return Vector3.ZERO
     var to_rest := speed * mass / delta
-    return (-velocity / speed * mass * config.deceleration).limit_length(to_rest)
+    return (-velocity / speed * config.brake_strength).limit_length(to_rest)
 
 
 func _max_speed() -> float:

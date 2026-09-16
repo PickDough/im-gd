@@ -11,7 +11,7 @@ friction = 0.0
 [sub_resource type="Resource" id="Resource_5dqq3"]
 script = ExtResource("2_pcpcu")
 jump_height = 5.0
-acceleration = 50.0
+strength = 3500.0
 look_pitch = 0.01
 look_yaw = 0.01
 metadata/_custom_type_script = "uid://cqmylbuvj5na4"
@@ -22,8 +22,7 @@ size = Vector3(1, 2, 1)
 [sub_resource type="Resource" id="Resource_twsb6"]
 script = ExtResource("4_qifwp")
 pickup_length = 4.0
-pickup_frequency = null
-pickup_damping_ratio = null
+pickup_strength = 3000.0
 metadata/_custom_type_script = "uid://b3a7mmnmcxeh1"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilsnw"]
