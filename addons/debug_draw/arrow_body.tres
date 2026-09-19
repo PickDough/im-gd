@@ -1,10 +1,7 @@
 [gd_resource type="CylinderMesh" format=3 uid="uid://cujlwnpw6ttqt"]
 
-[ext_resource type="Material" uid="uid://duxsxarox8rrc" path="res://addons/debug_draw/arrow_material.tres" id="1_s0djy"]
-
 [resource]
 resource_local_to_scene = true
-material = ExtResource("1_s0djy")
 top_radius = 0.03
 bottom_radius = 0.03
 height = 0.75

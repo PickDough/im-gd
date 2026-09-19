@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://hudmb4gj4acm"]
+
+[ext_resource type="Script" uid="uid://dhajh1m565l0c" path="res://addons/debug_draw/sphere_3d.gd" id="1_pdult"]
+
+[node name="Sphere3D" type="Node3D" unique_id=301350932]
+script = ExtResource("1_pdult")
+radius = 2.0
+color = Color(0.8905942, 0.7029583, 0.48989862, 1)

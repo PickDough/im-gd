@@ -50,6 +50,8 @@ func _input(event: InputEvent) -> void:
 		var mouse = event as InputEventMouseButton
 		if mouse.button_mask == MOUSE_BUTTON_MASK_LEFT:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("slowmo"):
+		Engine.time_scale = 0.33 if Engine.time_scale == 1.0 else 1.0
 
 
 func _on_jump() -> void:
@@ -66,3 +68,4 @@ func _on_look() -> void:
 
 func _on_crouch() -> void:
 	pawn.intent.crouch = true
+	

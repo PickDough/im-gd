@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b4iq1r10ik2gd"]
-
-[ext_resource type="Script" uid="uid://c1ff7yn20d101" path="res://addons/debug_draw/arrow_3d.gd" id="1_4cv6y"]
-
-[node name="Arrow3D" type="Node3D" unique_id=1294922347]
-script = ExtResource("1_4cv6y")
