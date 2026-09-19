@@ -21,6 +21,7 @@ GUIDE="*uid://p2jwrgjcbexr"
 GuideAutoload="*uid://c3vr4tfgyfjew"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 Globals="*uid://djvaulmfy0yy7"
+DeDraw="*uid://vr6fy6w0a8ym"
 
 [display]
 
