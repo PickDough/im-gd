@@ -5,8 +5,8 @@ extends CanvasLayer
 
 
 func set_cross_color(color: Color) -> void:
-    _cross.color = color
+	_cross.color = color
 
 
 func reset_cross_color() -> void:
-    _cross.color = Color.WHITE
+	_cross.color = Color.WHITE
