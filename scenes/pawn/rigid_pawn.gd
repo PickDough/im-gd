@@ -11,7 +11,6 @@ var intent: PawnIntent = PawnIntent.new()
 
 var _floor_ray: RayCast3D
 var _yaw_delta := 0.0
-var _jump_buffer := 0.0
 
 
 func _ready() -> void:

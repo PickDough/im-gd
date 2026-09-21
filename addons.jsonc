@@ -12,13 +12,15 @@
   "addons": {
     "guide": { // name must match the folder name in the repository
       "url": "https://github.com/godotneers/G.U.I.D.E",
-      // "source": "remote", // default
-      // "checkout": "main", // default
       "subfolder": "addons/guide"
     },
     "gdscript-formatter": {
       "url": "https://github.com/GDQuest/GDScript-formatter",
-      "subfolder": "addons/gdscript-formatter"
+      "subfolder": "addons/GDQuest_GDScript_formatter"
+    },
+    "de_draw": {
+        "url": "/Users/user/Documents/godot-addons/de_draw",
+        "source": "symlink"
     }
   }
 }

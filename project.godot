@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GUIDE="*uid://p2jwrgjcbexr"
 GuideAutoload="*uid://c3vr4tfgyfjew"
 Globals="*uid://djvaulmfy0yy7"
 DeDraw="*uid://vr6fy6w0a8ym"
@@ -29,6 +30,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="im-gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/de_draw/plugin.cfg", "res://addons/gdscript-formatter/plugin.cfg", "res://addons/guide/plugin.cfg")
 
 [input]
 
