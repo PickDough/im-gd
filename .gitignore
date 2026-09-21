@@ -2,6 +2,5 @@
 .godot/
 /android/
 .ggg.state
-addons/*
 !addons/.editorconfig
 .addons/*

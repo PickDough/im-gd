@@ -1,7 +1,0 @@
-[gd_resource type="CylinderMesh" format=3 uid="uid://cujlwnpw6ttqt"]
-
-[resource]
-resource_local_to_scene = true
-top_radius = 0.03
-bottom_radius = 0.03
-height = 0.75

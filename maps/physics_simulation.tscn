@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dp2l4o32b3vd"]
 
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_6kefv"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_xe2in"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_6kefv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_xe2in"]
 [ext_resource type="Script" uid="uid://b2acx22g83eaa" path="res://scenes/physics/sping_arm/doubly_spring_arm.gd" id="3_xese6"]
-[ext_resource type="Script" uid="uid://c1ff7yn20d101" path="res://addons/debug_draw/arrow_3d.gd" id="4_xese6"]
+[ext_resource type="Script" uid="uid://c1ff7yn20d101" path="res://addons/dedraw/geometry/arrow/arrow_3d.gd" id="4_xese6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0er8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
