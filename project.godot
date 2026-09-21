@@ -17,9 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GUIDE="*uid://p2jwrgjcbexr"
 GuideAutoload="*uid://c3vr4tfgyfjew"
-PhantomCameraManager="*uid://duq6jhf6unyis"
 Globals="*uid://djvaulmfy0yy7"
 DeDraw="*uid://vr6fy6w0a8ym"
 
@@ -28,9 +26,11 @@ DeDraw="*uid://vr6fy6w0a8ym"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[editor_plugins]
+[dotnet]
 
-enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+project/assembly_name="im-gd"
+
+
 
 [input]
 
