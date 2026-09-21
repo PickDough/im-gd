@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_vwsla"]
 script = ExtResource("2_vwsla")
 jump_height = 5.0
+strength = 1000.0
 look_pitch = 0.01
 look_yaw = 0.01
 metadata/_custom_type_script = "uid://cqmylbuvj5na4"
@@ -85,7 +86,7 @@ material = SubResource("ShaderMaterial_02lo7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.031072, -4.8904004)
 collision_layer = 4
 collision_mask = 7
-mass = 100.0
+mass = 10.0
 max_contacts_reported = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sphere" unique_id=735714307]
